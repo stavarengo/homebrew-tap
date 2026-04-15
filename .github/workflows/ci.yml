@@ -18,14 +18,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Homebrew
-        if: matrix.os == 'ubuntu-latest'
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Audit formula
-        run: brew audit --strict --online Formula/mobt.rb
+        run: brew audit --strict --online stavarengo/tap/mobt
 
       - name: Install formula from source
-        run: brew install --build-from-source ./Formula/mobt.rb
+        run: brew install --build-from-source stavarengo/tap/mobt
 
       - name: Smoke test mobt CLI
         run: |
